@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+
+        <title>ADSynthesizer</title>
+
+        <style>
+            table {
+              border-collapse: collapse;
+              width: 100%;
+            }
+        
+            th, td {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+            }
+        
+            th {
+              background-color: #f2f2f2;
+            }
+          </style>
+
+        <meta charset="UTF-8">
+
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.3/xlsx.full.min.js"></script>
+        <script src="adsynth.js" defer></script>
+
+
+    </head>
+
+    <body onload="vueinst.loadExcelFile()">
+        <div id="app">
+
+            <div class = "nav-bar">
+                <div class = "nav-icon">
+                    <img src="images/logo3.png" alt="ADSynthesizer logo">
+                </div>
+                <div>   
+                    <ul>
+                        <li v-bind:class = "{chosen_service : service === 'home'}" v-on:click = "service = 'home'">
+                            Home 
+                        </li>
+                        <li v-bind:class = "{chosen_service : service === 'overview'}" v-on:click = "service = 'overview'">
+                            Overview
+                        </li>
+                        <li v-bind:class = "{chosen_service : service === 'features'}" v-on:click = "service = 'features'">
+                            Features 
+                        </li>
+                        <li v-bind:class = "{chosen_service : service === 'config'}" v-on:click = "service = 'config', loadExcelFile">
+                            Configurations
+                        </li>
+                        <li v-bind:class = "{chosen_service : service === 'installation'}" v-on:click = "service = 'installation'">
+                            Installation
+                        </li>
+                        <li v-bind:class = "{chosen_service : service === 'usage'}" v-on:click = "service = 'usage'">
+                            Usage
+                        </li>
+                        <li v-bind:class = "{chosen_service : service === 'about'}" v-on:click = "service = 'about'">
+                            About
+                        </li>
+                        <li v-bind:class = "{chosen_service : service === 'contact'}" v-on:click = "service = 'contact'">
+                            Contact
+                        </li>
+                        
+                    </ul>
+                </div>
+  
+            </div>
+
+            <main>
+                <div id = "home" v-if="service === 'home'">
+                    <p>A realisitic Active Directory attack graph generator</p>
+                    <img src="images/ad_and_attack.jpeg" alt="Active Directory and its attack graphs">
+                    <div class = "intro">
+                        <div>Provide realistic AD data</div>
+                        <div>Implement common misconfigrations</div>
+                        <div>Various security levels</div>
+                        <div>Flexible configurations</div>
+                    </div>
+                </div>
+                <div id = "overview" v-if = "service === 'overview'">
+                    <b class = "title">Overview</b>
+                    <p class = "description">Software Architecture of ADSynthesizer</p>
+                    <div id = "architecture">
+                        <img src="images/adsynth_architecture3.png" alt="ADSynthesizer Architecture">
+                    </div>
+
+                    <div class = "labels">
+                        <div>(a) Node generation</div>
+                        <div>(b) Edge generation</div>
+                        <div>(c) Misconfiguration generation</div>
+                    </div>
+                    
+
+                </div>
+                <div id = "features" v-if = "service === 'features'">
+                    <b class = "title">Features</b>
+                    <p class = "description">ADSynthesizer facilitates your demand for realistic AD data</p>
+                    <div class = "text-and-img gap">
+                        <div class = "text">
+                            <b>Synthetic structure</b>
+                            <p>Construct Active Directory graphs based on design principles and guidelines from Microsoft and cyber experts</p>
+                        </div>
+                        <div>
+                            <img src = "images/ou_structure.png" alt = "ou_structure">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class = "text-and-img">
+                        <div class = "text">
+                            <b>Build on an abstract model</b>
+                            <p>ADSynthesizer builds graphs on metagraphs with set-to-set-mapping, an intrinsic nature of Active Directory.</p>
+                        </div>
+                        <div>
+                            <img id = "metagraph" src = "images/metagraph.png" alt = "metagraph">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class = "text-and-img gap last-text-and-img">
+                        <div class = "text">
+                            <b>Implement common misconfigurations</b>
+                            <p>ADSynthesizer allows simulating various misconfigurations, including privilege escalation, with different probabilities.</p>
+                        </div>
+                        <div>
+                            <img src = "images/misconfig.png" alt = "Misconfiguration">
+                        </div>
+                    </div>
+                </div>
+                <div id = "config" v-if = "service === 'config'">
+                    <b class = "title">Configurations</b>
+                    <p class = "description">ADSynthesizer generates AD data at your demand with a set of parameters</p>
+                    <div id = "shothound_result">
+                        <table class = "shothound_table">
+                            <thead>
+                              <tr>
+                                <th v-for = "value in params_title">{{value}}</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <template v-for="(items, object) in params_dict">
+                                <tr v-for="(item, index) in items">
+                                  <template v-if="index === 0">
+                                    <td :rowspan="items.length" style="background-color: white;">{{ object }}</td>
+                                  </template>
+                                  <td>{{ item.Parameter }}</td>
+                                  <td>{{ item.Description }}</td>
+                                  <td>{{ item.Value }}</td>
+                                </tr>
+                              </template>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+                <div id = "installation" v-if = "service === 'installation'">
+                    <b class = "title">Installation</b>
+                    <p class = "description">ADSynthesizer currently supports MacOS only</p>
+                    <div class = "content">
+                        <p>ADSynthesizer requires Python 3 and Neo4J from version 4.</p>
+                        <i>
+                            Please follow the embedded links to install <a href="https://www.python.org/downloads/">Python 3</a> and <a href="https://neo4j.com/docs/operations-manual/current/installation/osx/">Neo4J</a>
+                        </i>
+                        <div class = "text-and-command">
+                            <b>To install ADSynthesizer, please follow the below commands:</b>
+                            <div class="well well-sm">
+                                <p>git clone https://github.com/adsynth2024/ADSynth.git</p>
+                                <p>cd ADSynth</p>
+                                <p>pip3 install -r requirement.txt</p>
+                                <!-- <p>python3 setup.py install</p>    -->
+                            </div>
+                        </div>                    
+                    </div>
+                </div>
+                <div id = "usage" v-if = "service === 'usage'">
+                    <b class = "title">Usage</b>
+                    <p class = "description">ADSynthesizer provides commands to assist the generation process</p>
+                    <div class = "content">
+                        <div class = "text-and-command">
+                            <b>Start executing ADSynthesizer</b>
+                            <div class="well well-sm">
+                                <p>python3 -m adsynth</p>
+                            </div>
+                        </div>
+                        
+                        <div class = "text-and-command">
+                            <b>ADSynthesizer - Command descriptions</b>
+                            <ul class = "command-description">
+                                <li v-for = "c in commands">
+                                    <div class="well well-sm">{{c.command}}</div> - {{c.description}}
+                                </li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div id = "about" v-if = "service === 'about'">
+                    <b class = "title">About</b>
+                </div>
+                <div id = "contact" v-if = "service === 'contact'">
+                    <b class = "title">Contact</b>
+                </div>
+            </main>
+
+
+            <div id = "footer"><p>&copy; ADSYNTHESIZER</p></div>
+
+        </div>
+
+    </body>
+
+</html>
