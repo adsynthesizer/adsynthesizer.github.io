@@ -67,7 +67,7 @@ body {
      }
 
     main {
-        margin:25px 15%;
+        margin: 15px 12%;
         text-align: center;
         
         .title {
@@ -136,13 +136,21 @@ body {
 
 
         #home{
+            
             p {
                 font-size: 30px;
                 color: black;
+                margin-bottom: 0
+            }
+
+            p.home--title {
+                font-size: 20px;
+                color: red;
+                margin-bottom: 10px;
             }
             
             img{
-                max-width: 80%;
+                max-width: 70%;
                 height: auto;
             }
         } 
