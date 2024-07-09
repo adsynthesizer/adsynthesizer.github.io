@@ -78,6 +78,9 @@ body {
             font-size: 20px;
             margin-bottom: 30px;
         }
+        .redirect {
+            font-size: 20px;
+        }
 
         .text-and-img {
             padding: 15px;

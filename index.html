@@ -163,11 +163,11 @@
                 </div>
                 <div id = "installation" v-if = "service === 'installation'">
                     <b class = "title">Installation</b>
-                    <p class = "description">ADSynthesizer currently supports MacOS only</p>
+                    <!-- <p class = "description">ADSynthesizer currently supports MacOS only</p> -->
                     <div class = "content">
-                        <p>ADSynthesizer requires Python 3 and Neo4J from version 4.</p>
+                        <p>ADSynthesizer requires Python 3</p>
                         <i>
-                            Please follow the embedded links to install <a href="https://www.python.org/downloads/">Python 3</a> and <a href="https://neo4j.com/docs/operations-manual/current/installation/osx/">Neo4J</a>
+                            Please follow the embedded link to install <a href="https://www.python.org/downloads/">Python 3</a>
                         </i>
                         <div class = "text-and-command">
                             <b>To install ADSynthesizer, please follow the below commands:</b>
@@ -183,23 +183,11 @@
                 <div id = "usage" v-if = "service === 'usage'">
                     <b class = "title">Usage</b>
                     <p class = "description">ADSynthesizer provides commands to assist the generation process</p>
+                    <b class="redirect">Please visit our <a href="https://github.com/adsynthesizer/ADSynth">Github page</a> for detailed instructions.</b>
                     <div class = "content">
                         <div class = "text-and-command">
-                            <b>Start executing ADSynthesizer</b>
-                            <div class="well well-sm">
-                                <p>python3 -m adsynth</p>
-                            </div>
-                        </div>
-                        
-                        <div class = "text-and-command">
-                            <b>ADSynthesizer - Command descriptions</b>
-                            <ul class = "command-description">
-                                <li v-for = "c in commands">
-                                    <div class="well well-sm">{{c.command}}</div> - {{c.description}}
-                                </li>
-                            </ul>
-                        </div>
-                        
+                            
+                        </div>                        
                     </div>
                 </div>
                 <div id = "about" v-if = "service === 'about'">
