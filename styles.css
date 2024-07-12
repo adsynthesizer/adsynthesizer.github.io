@@ -149,9 +149,9 @@ body {
             
             
             p {
-                font-size: 1.4em;
+                font-size: 2em;
                 color: black;
-                margin-bottom: 0;
+                margin-bottom: 2vh;
             }
 
             
@@ -184,7 +184,7 @@ body {
                 font-size: 1.2em;
                 padding: 2.25vh;
                 background-color: rgba(0, 128, 128, 0.3);
-                margin: 1.5vh 1.2vw;
+                margin: 1.2vh 1.2vw 1.5vh 1.2vw;
                 border-radius: 7.5vh;
                 box-shadow: 0 0 0.75vh rgba(0, 0, 0, 0.15);
                 cursor: default;
