@@ -330,5 +330,18 @@ hr {
     cursor: default; /* Change this to the desired background color on hover */
 }
 
+.iframe-container {
+    text-align: center; /* Center child elements horizontally */
+    height: 60vh; /* Full viewport height */
+    display: flex;
+    align-items: center; /* Center vertically */
+    margin-top: 3vh;
+}
 
+iframe {
+    display: inline-block;
+    width: 70%; /* Adjust the width as needed */
+    height: 100%; /* Adjust the height as needed */
+    margin: auto;
+}
   
