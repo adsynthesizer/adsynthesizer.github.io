@@ -331,7 +331,7 @@ hr {
 }
 
 #iframe-container {
-    text-align: center; /* Center child elements horizontally */
+    text-align: center !important; /* Center child elements horizontally */
     height: 60vh; /* Full viewport height */
     display: flex;
     align-items: center; /* Center vertically */
