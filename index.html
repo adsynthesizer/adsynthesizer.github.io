@@ -62,8 +62,8 @@
                         <li v-bind:class = "{chosen_service : service === 'usage'}" v-on:click = "service = 'usage'">
                             Usage
                         </li>
-                        <li v-bind:class = "{chosen_service : service === 'about'}" v-on:click = "service = 'about'">
-                            About
+                        <li v-bind:class = "{chosen_service : service === 'publications'}" v-on:click = "service = 'publications'">
+                            Publications
                         </li>
                         <li v-bind:class = "{chosen_service : service === 'contact'}" v-on:click = "service = 'contact'">
                             Contact
@@ -194,11 +194,37 @@
                         </div>                        
                     </div>
                 </div>
-                <div id = "about" v-if = "service === 'about'">
-                    <b class = "title">About</b>
+                <div id = "publications" v-if = "service === 'publications'">
+                    <b class = "title">Publications</b>
+                    <p class = "description">The work and the demo are accepted at 2 top-tier conferences</p>
+                    <div>
+                        <p><b>Full paper: </b>Nhu Long Nguyen, Nickolas Falkner, and Hung Nguyen. 2024. ADSynth: Synthesizing Realistic Active Directory Attack Graphs. In <i>2024 54th Annual IEEE/IFIP
+                            International Conference on Dependable Systems and Networks (DSN).</i> IEEE, NJ, USA. <b>[CORE A]</b></p>
+                        <p><b>Software Demo: </b>Nguyen, Nhu Long, Nickolas Falkner, and Hung Nguyen. "Synthesizing Realistic Enterprise Active Directory Attack Graphs with ADSynth". <i>Proceedings of 
+                            the ACM SIGCOMM 2024 Conference: Posters and Demos.</i> 2024. <b>[CORE A*]</b></p>
+                    </div>
+
                 </div>
                 <div id = "contact" v-if = "service === 'contact'">
                     <b class = "title">Contact</b>
+                    <p class = "description">For further information, please find the listed contact info.</p>
+                    <div>
+                        <p>
+                            <b><a href="https://www.linkedin.com/in/long-nhu-nguyen-a9382320b/">Nhu Long Nguyen</a> (University of Adelaide, South Australia)</b>
+                            <ul>
+                                <li><a href="mailto:nhulong.nguyen@adelaide.edu.au"></a>nhulong.nguyen@adelaide.edu.au <i>(Academic)</i></li>
+                                <li><a href="mailto:allenrizzo74@gmail.com"></a>allenrizzo74@gmail.com <i>(Personal)</i></li>
+                            </ul>
+                        </p>
+
+                        <p>
+                            <b><a href="https://hxnguyen.github.io/">Hung Nguyen</a> (University of Adelaide, South Australia)</b>
+                            <ul>
+                                <li><a href="mailto:hung.nguyen@adelaide.edu.au"></a>hung.nguyen@adelaide.edu.au <i>(Academic)</i></li>
+                            </ul>
+                        </p>
+
+                    </div>
                 </div>
             </main>
 

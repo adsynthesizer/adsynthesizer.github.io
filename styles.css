@@ -344,4 +344,14 @@ hr {
         margin: auto;
     }
 }
+
+#publications, #contact {
+    div {
+        margin-top: 5vh;
+        p, li {
+            text-align: left;
+            font-size: 1.25em;
+        }
+    }
+}
   
